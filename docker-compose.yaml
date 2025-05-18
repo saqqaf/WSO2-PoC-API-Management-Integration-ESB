@@ -97,7 +97,7 @@ services:
     networks:
       - wso2-net
     ports:
-      - '3000:3000'
+      - '${GRAFANA_PORT}:3000'
     depends_on:
       - prometheus
       - loki
