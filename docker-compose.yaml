@@ -1,22 +1,22 @@
 services:
   apim:
-    image: wso2/wso2am:4.3.0-alpine  # Corrected image tag
+    image: wso2/wso2am:4.3.0-alpine
     container_name: wso2-apim
     networks:
       - wso2-net
     ports:
       - '9443:9443'
     environment:
-      - DB_HOST=postgres
-      - DB_PORT=5432
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=Pass@123
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
       - RUNTIME_PROFILE=default
     volumes:
       - esb_repo:/home/wso2carbon/repository/deployment/server
 
   esb:
-    image: wso2/wso2ei-integrator:latest  # Confirmed correct image
+    image: wso2/wso2ei-integrator:latest
     container_name: wso2-esb
     networks:
       - wso2-net
@@ -26,9 +26,9 @@ services:
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=jdbc:postgresql://postgres:5432/wso2db
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=Pass@123
+      - DATABASE_URL=jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
     volumes:
       - esb_repo:/home/wso2carbon/repository/deployment/server
 
@@ -38,8 +38,8 @@ services:
     networks:
       - wso2-net
     environment:
-      - POSTGRES_PASSWORD=Pass@123
-      - POSTGRES_DB=wso2db
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
