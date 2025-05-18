@@ -1,0 +1,110 @@
+services:
+  apim:
+    image: wso2/wso2am:4.3.0-alpine  # Corrected image tag
+    container_name: wso2-apim
+    networks:
+      - wso2-net
+    ports:
+      - '9443:9443'
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=Pass@123
+      - RUNTIME_PROFILE=default
+    volumes:
+      - esb_repo:/home/wso2carbon/repository/deployment/server
+
+  esb:
+    image: wso2/wso2ei-integrator:latest  # Confirmed correct image
+    container_name: wso2-esb
+    networks:
+      - wso2-net
+    ports:
+      - '8290:8290'
+      - '8243:8243'
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=jdbc:postgresql://postgres:5432/wso2db
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=Pass@123
+    volumes:
+      - esb_repo:/home/wso2carbon/repository/deployment/server
+
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    networks:
+      - wso2-net
+    environment:
+      - POSTGRES_PASSWORD=Pass@123
+      - POSTGRES_DB=wso2db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    networks:
+      - wso2-net
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+
+  mockapi:
+    image: kennethreitz/httpbin
+    container_name: mockapi
+    networks:
+      - wso2-net
+    ports:
+      - '8000:80'
+
+  loki:
+    image: grafana/loki:2.4.1
+    container_name: loki
+    networks:
+      - wso2-net
+    volumes:
+      - loki_data:/loki
+    ports:
+      - '3100:3100'
+
+  promtail:
+    image: grafana/promtail:2.4.1
+    container_name: promtail
+    networks:
+      - wso2-net
+    volumes:
+      - .:/etc/promtail/
+    command: -config.file=/etc/promtail/promtail-config.yml
+
+  prometheus:
+    image: prom/prometheus:v2.37.0
+    container_name: prometheus
+    networks:
+      - wso2-net
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - '9090:9090'
+
+  grafana:
+    image: grafana/grafana:9.2.1
+    container_name: grafana
+    networks:
+      - wso2-net
+    ports:
+      - '3000:3000'
+    depends_on:
+      - prometheus
+      - loki
+
+volumes:
+  postgres_data:
+  esb_repo:
+  loki_data:
+
+networks:
+  wso2-net:
+    driver: bridge
