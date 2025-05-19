@@ -16,6 +16,7 @@ services:
       - VIRTUAL_HOST=wso2-apim.rihal.dev
       - LETSENCRYPT_HOST=wso2-apim.rihal.dev
       - VIRTUAL_PORT=9443
+      - VIRTUAL_PROTO=https
     volumes:
       - esb_repo:/home/wso2carbon/repository/deployment/server
 
@@ -35,7 +36,9 @@ services:
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
       - VIRTUAL_HOST=wso2-esb.rihal.dev
+      - LETSENCRYPT_HOST=wso2-esb.rihal.dev
       - VIRTUAL_PORT=8290
+      - VIRTUAL_PROTO=https
     volumes:
       - esb_repo:/home/wso2carbon/repository/deployment/server
 
@@ -113,7 +116,9 @@ services:
       - '${GRAFANA_PORT}:3000'
     environment:
       - VIRTUAL_HOST=wso2-grafana.rihal.dev
+      - LETSENCRYPT_HOST=wso2-grafana.rihal.dev
       - VIRTUAL_PORT=${GRAFANA_PORT}
+      - VIRTUAL_PROTO=https
     depends_on:
       - prometheus
       - loki
