@@ -22,6 +22,14 @@ services:
       - CARBON_MGT_HOSTNAME=wso2-apim.rihal.dev
       - GATEWAY_ENV=Production
       - APIM_ANALYTICS_ENABLED=false
+      - APIM_HOSTNAME=wso2-apim.rihal.dev
+      - APIM_GATEWAY_HOSTNAME=wso2-apim.rihal.dev
+      - APIM_KEYMANAGER_HOSTNAME=wso2-apim.rihal.dev
+      - APIM_PUBLISHER_HOSTNAME=wso2-apim.rihal.dev
+      - APIM_DEV_PORTAL_HOSTNAME=wso2-apim.rihal.dev
+      - APIM_ADMIN_PORTAL_HOSTNAME=wso2-apim.rihal.dev
+      - APIM_OAUTH2_CALLBACK_URL=https://wso2-apim.rihal.dev/publisher/services/auth/callback/login
+      - APIM_OAUTH2_REDIRECT_URL=https://wso2-apim.rihal.dev/publisher/services/auth/callback/login
     volumes:
       - esb_repo:/home/wso2carbon/repository/deployment/server
 
