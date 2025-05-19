@@ -30,6 +30,24 @@ services:
       - APIM_ADMIN_PORTAL_HOSTNAME=wso2-apim.rihal.dev
       - APIM_OAUTH2_CALLBACK_URL=https://wso2-apim.rihal.dev/publisher/services/auth/callback/login
       - APIM_OAUTH2_REDIRECT_URL=https://wso2-apim.rihal.dev/publisher/services/auth/callback/login
+      - APIM_OAUTH2_ISSUER=https://wso2-apim.rihal.dev/oauth2/token
+      - APIM_OAUTH2_AUTHORIZE_URL=https://wso2-apim.rihal.dev/oauth2/authorize
+      - APIM_OAUTH2_TOKEN_URL=https://wso2-apim.rihal.dev/oauth2/token
+      - APIM_OAUTH2_REVOKE_URL=https://wso2-apim.rihal.dev/oauth2/revoke
+      - APIM_OAUTH2_INTROSPECT_URL=https://wso2-apim.rihal.dev/oauth2/introspect
+      - APIM_OAUTH2_USERINFO_URL=https://wso2-apim.rihal.dev/oauth2/userinfo
+      - APIM_OAUTH2_JWKS_URL=https://wso2-apim.rihal.dev/oauth2/jwks
+      - APIM_OAUTH2_DCR_URL=https://wso2-apim.rihal.dev/oauth2/dcr/v1.1/register
+      - APIM_OAUTH2_DCR_V1_URL=https://wso2-apim.rihal.dev/oauth2/dcr/v1.1/register
+      - APIM_OAUTH2_DCR_V2_URL=https://wso2-apim.rihal.dev/oauth2/dcr/v1.1/register
+      - APIM_OAUTH2_DCR_V3_URL=https://wso2-apim.rihal.dev/oauth2/dcr/v1.1/register
+      - APIM_OAUTH2_DCR_V4_URL=https://wso2-apim.rihal.dev/oauth2/dcr/v1.1/register
+      - APIM_OAUTH2_DCR_V5_URL=https://wso2-apim.rihal.dev/oauth2/dcr/v1.1/register
+      - APIM_OAUTH2_DCR_V6_URL=https://wso2-apim.rihal.dev/oauth2/dcr/v1.1/register
+      - APIM_OAUTH2_DCR_V7_URL=https://wso2-apim.rihal.dev/oauth2/dcr/v1.1/register
+      - APIM_OAUTH2_DCR_V8_URL=https://wso2-apim.rihal.dev/oauth2/dcr/v1.1/register
+      - APIM_OAUTH2_DCR_V9_URL=https://wso2-apim.rihal.dev/oauth2/dcr/v1.1/register
+      - APIM_OAUTH2_DCR_V10_URL=https://wso2-apim.rihal.dev/oauth2/dcr/v1.1/register
     volumes:
       - esb_repo:/home/wso2carbon/repository/deployment/server
 
