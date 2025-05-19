@@ -14,6 +14,7 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - RUNTIME_PROFILE=default
       - VIRTUAL_HOST=wso2-apim.rihal.dev
+      - LETSENCRYPT_HOST=wso2-apim.rihal.dev
       - VIRTUAL_PORT=9443
     volumes:
       - esb_repo:/home/wso2carbon/repository/deployment/server
