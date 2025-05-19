@@ -17,6 +17,11 @@ services:
       - LETSENCRYPT_HOST=wso2-apim.rihal.dev
       - VIRTUAL_PORT=9443
       - VIRTUAL_PROTO=https
+      - HOSTNAME=wso2-apim.rihal.dev
+      - CARBON_HOST=wso2-apim.rihal.dev
+      - CARBON_MGT_HOSTNAME=wso2-apim.rihal.dev
+      - GATEWAY_ENV=Production
+      - APIM_ANALYTICS_ENABLED=false
     volumes:
       - esb_repo:/home/wso2carbon/repository/deployment/server
 
@@ -36,7 +41,6 @@ services:
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
       - VIRTUAL_HOST=wso2-esb.rihal.dev
-      - LETSENCRYPT_HOST=wso2-esb.rihal.dev
       - VIRTUAL_PORT=8290
       - VIRTUAL_PROTO=https
     volumes:
