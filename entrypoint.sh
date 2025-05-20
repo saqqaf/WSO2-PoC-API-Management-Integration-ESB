@@ -66,16 +66,6 @@ properties.UserNameProperty = "UserName"
 properties.RoleNameProperty = "RoleName"
 properties.UserNameListProperty = "UserName"
 properties.RoleNameListProperty = "RoleName"
-properties.UserNameSearchFilter = "UserName"
-properties.RoleNameSearchFilter = "RoleName"
-properties.UserNameAttribute = "UserName"
-properties.RoleNameAttribute = "RoleName"
-properties.UserNameListFilter = "UserName"
-properties.RoleNameListFilter = "RoleName"
-properties.UserNameProperty = "UserName"
-properties.RoleNameProperty = "RoleName"
-properties.UserNameListProperty = "UserName"
-properties.RoleNameListProperty = "RoleName"
 
 # (you _could_ add more [apim.*].url overrides here,
 #  but we're going to fix the webapps next)
