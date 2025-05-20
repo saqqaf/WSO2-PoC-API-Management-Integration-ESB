@@ -25,7 +25,8 @@ services:
       - API_M_HOSTNAME=wso2-apim.rihal.dev
     volumes:
       - esb_repo:/home/wso2carbon/repository/deployment/server
-
+      - ./entrypoint.sh:/home/wso2carbon/wso2am-4.3.0/bin/entrypoint.sh
+    entrypoint: ["/home/wso2carbon/wso2am-4.3.0/bin/entrypoint.sh"]
   esb:
     image: wso2/wso2ei-integrator:latest
     container_name: wso2-esb
@@ -46,8 +47,7 @@ services:
       - VIRTUAL_PROTO=https
     volumes:
       - esb_repo:/home/wso2carbon/repository/deployment/server
-      - ./entrypoint.sh:/home/wso2carbon/wso2am-4.3.0/bin/entrypoint.sh
-    entrypoint: ["/home/wso2carbon/wso2am-4.3.0/bin/entrypoint.sh"]
+
 
   postgres:
     image: postgres:13
