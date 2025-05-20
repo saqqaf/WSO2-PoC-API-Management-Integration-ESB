@@ -16,8 +16,27 @@ enable_port_forward = true
 # if you ever front everything at a path-prefix, uncomment below:
 # proxy_context_path = "/apim"
 
+[super_admin]
+username = "${super_admin_username:-admin}"
+password = "${super_admin_password:-admin}"
+create_admin_account = true
+
+[database.shared_db]
+type = "postgres"
+url = "jdbc:postgresql://${DB_HOST:-postgres}:${DB_PORT:-5432}/${DB_NAME:-wso2am}"
+username = "${DB_USERNAME:-wso2carbon}"
+password = "${DB_PASSWORD:-wso2carbon}"
+driver = "org.postgresql.Driver"
+
+[database.apim_db]
+type = "postgres"
+url = "jdbc:postgresql://${DB_HOST:-postgres}:${DB_PORT:-5432}/${DB_NAME:-wso2am}"
+username = "${DB_USERNAME:-wso2carbon}"
+password = "${DB_PASSWORD:-wso2carbon}"
+driver = "org.postgresql.Driver"
+
 # (you _could_ add more [apim.*].url overrides here,
-#  but we’re going to fix the webapps next)
+#  but we're going to fix the webapps next)
 EOF
 
 # 2) find every settings.json in all portals and patch origin

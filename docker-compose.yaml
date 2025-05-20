@@ -23,6 +23,8 @@ services:
       - GATEWAY_ENV=Production
       - APIM_ANALYTICS_ENABLED=false
       - API_M_HOSTNAME=wso2-apim.rihal.dev
+      - super_admin_username=admin
+      - super_admin_password=admin
     volumes:
       - esb_repo:/home/wso2carbon/repository/deployment/server
       - ./entrypoint.sh:/home/wso2carbon/wso2am-4.3.0/bin/entrypoint.sh
@@ -139,4 +141,4 @@ networks:
   wso2-net:
     driver: bridge
   shared-network:
-    external: true
+    external: false
