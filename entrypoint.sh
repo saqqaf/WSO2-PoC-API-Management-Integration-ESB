@@ -35,6 +35,48 @@ username = "${DB_USERNAME:-wso2carbon}"
 password = "${DB_PASSWORD:-wso2carbon}"
 driver = "org.postgresql.Driver"
 
+[user_store]
+type = "database"
+class = "org.wso2.carbon.user.core.jdbc.JDBCUserStoreManager"
+tenant_manager = "org.wso2.carbon.user.core.tenant.JDBCTenantManager"
+read_only = false
+max_user_name_list_length = 100
+max_role_name_list_length = 100
+user_roles_cache_enabled = true
+properties.DriverName = "org.postgresql.Driver"
+properties.URL = "jdbc:postgresql://${DB_HOST:-postgres}:${DB_PORT:-5432}/${DB_NAME:-wso2am}"
+properties.UserName = "${DB_USERNAME:-wso2carbon}"
+properties.Password = "${DB_PASSWORD:-wso2carbon}"
+properties.UserNameUnique = "true"
+properties.IsEmailUserName = "false"
+properties.StoreSaltedPassword = "true"
+properties.ReadGroups = "true"
+properties.WriteGroups = "true"
+properties.ReadOnly = "false"
+properties.UserRolesCacheEnabled = "true"
+properties.MaxUserNameListLength = "100"
+properties.MaxRoleNameListLength = "100"
+properties.UserNameSearchFilter = "UserName"
+properties.RoleNameSearchFilter = "RoleName"
+properties.UserNameAttribute = "UserName"
+properties.RoleNameAttribute = "RoleName"
+properties.UserNameListFilter = "UserName"
+properties.RoleNameListFilter = "RoleName"
+properties.UserNameProperty = "UserName"
+properties.RoleNameProperty = "RoleName"
+properties.UserNameListProperty = "UserName"
+properties.RoleNameListProperty = "RoleName"
+properties.UserNameSearchFilter = "UserName"
+properties.RoleNameSearchFilter = "RoleName"
+properties.UserNameAttribute = "UserName"
+properties.RoleNameAttribute = "RoleName"
+properties.UserNameListFilter = "UserName"
+properties.RoleNameListFilter = "RoleName"
+properties.UserNameProperty = "UserName"
+properties.RoleNameProperty = "RoleName"
+properties.UserNameListProperty = "UserName"
+properties.RoleNameListProperty = "RoleName"
+
 # (you _could_ add more [apim.*].url overrides here,
 #  but we're going to fix the webapps next)
 EOF
