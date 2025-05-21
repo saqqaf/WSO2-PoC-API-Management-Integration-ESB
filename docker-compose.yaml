@@ -28,6 +28,7 @@ services:
     volumes:
       - esb_repo:/home/wso2carbon/repository/deployment/server
       - ./entrypoint.sh:/home/wso2carbon/wso2am-4.3.0/bin/entrypoint.sh
+      - ./postgresql-42.6.0.jar:/home/wso2carbon/wso2am-4.3.0/repository/components/lib/postgresql-42.6.0.jar
     entrypoint: ["/home/wso2carbon/wso2am-4.3.0/bin/entrypoint.sh"]
   esb:
     image: wso2/wso2ei-integrator:latest
