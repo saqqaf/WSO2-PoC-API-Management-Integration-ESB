@@ -8,10 +8,10 @@ services:
     ports:
       - '9443:9443'
     environment:
-      - DB_HOST=${DB_HOST}
-      - DB_PORT=${DB_PORT}
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=postgres
+      - DB_PORT=5466
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=Pass@123
       - RUNTIME_PROFILE=default
     volumes:
       - esb_repo:/home/wso2carbon/repository/deployment/server
@@ -53,15 +53,15 @@ services:
       - wso2-net
       - shared-network
     ports:
-      - '${POSTGRES_PORT}:5432'
+      - '5466:5432'
     environment:
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=Pass@123
+      - POSTGRES_DB=wso2db
+      - POSTGRES_USER=postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_NAME}"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d wso2db"]
       interval: 10s
       timeout: 5s
       retries: 5
