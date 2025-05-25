@@ -7,15 +7,22 @@ services:
       - shared-network
     ports:
       - '9443:9443'
+      - '8243:8243'
+      - '8280:8280'
     environment:
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
       - RUNTIME_PROFILE=default
+      - WSO2_HOSTNAME=apim.rihal.dev
+      - WSO2_GATEWAY_HOSTNAME=gw.rihal.dev
+      - WSO2_PUBLISHER_HOSTNAME=publisher.rihal.dev
+      - WSO2_DEVPORTAL_HOSTNAME=devportal.rihal.dev
     volumes:
       - esb_repo:/home/wso2carbon/repository/deployment/server
       - ./postgresql-42.6.0.jar:/home/wso2carbon/wso2am-4.3.0/repository/components/lib/postgresql-42.6.0.jar
+      - ./carbon-home/conf:/home/wso2carbon/wso2am-4.3.0/repository/conf
     depends_on:
       postgres:
         condition: service_healthy

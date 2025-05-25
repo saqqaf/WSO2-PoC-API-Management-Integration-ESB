@@ -1,0 +1,30 @@
+[server]
+hostname = "apim.rihal.dev"
+node_ip = "127.0.0.1"
+mode = "single"
+base_path = "${carbon.protocol}://${carbon.host}:${carbon.management.port}"
+
+[transport.http]
+properties.port = 8280
+properties.proxyPort = 80
+properties.transport.ws.port = 9099
+properties.transport.ws.proxyPort = 80
+
+[transport.https]
+properties.port = 8243
+properties.proxyPort = 443
+properties.transport.wss.port = 8099
+properties.transport.wss.proxyPort = 443
+
+[apim.gateway.environment]
+production_endpoints.urls = ["https://gw.rihal.dev:8243"]
+sandbox_endpoints.urls = ["https://gw.rihal.dev:8243"]
+
+[apim.devportal]
+url = "https://devportal.rihal.dev:9443/devportal"
+
+[apim.publisher]
+url = "https://publisher.rihal.dev:9443/publisher"
+
+[apim.admin]
+url = "https://apim.rihal.dev:9443/api/am/admin/" 
