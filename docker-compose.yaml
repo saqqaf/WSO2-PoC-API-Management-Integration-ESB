@@ -19,7 +19,8 @@ services:
       - ./postgresql-42.6.0.jar:/home/wso2carbon/wso2am-4.3.0/repository/components/lib/postgresql-42.6.0.jar
     entrypoint: ["/home/wso2carbon/wso2am-4.3.0/bin/entrypoint.sh"]
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "curl", "-f", "https://localhost:9443/carbon/admin/login.jsp"]
       interval: 30s
@@ -56,6 +57,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USERNAME}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
