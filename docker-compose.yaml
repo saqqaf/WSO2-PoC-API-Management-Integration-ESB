@@ -7,8 +7,8 @@ services:
       - shared-network
     ports:
       - '9443:9443'
-      - '8243:8243'
       - '8280:8280'
+      - '8243:8243'
     environment:
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
@@ -40,7 +40,6 @@ services:
       - shared-network
     ports:
       - '8290:8290'
-      - '8243:8243'
     depends_on:
       - postgres
     environment:
